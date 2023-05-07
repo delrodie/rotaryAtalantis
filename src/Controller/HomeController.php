@@ -37,4 +37,12 @@ class HomeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/{id}/fin', name:"app_fin", methods: ['GET', 'POST'])]
+    public function fin(Information $information)
+    {
+        return $this->render('home/fin.html.twig',[
+            'information' => $information
+        ]);
+    }
 }

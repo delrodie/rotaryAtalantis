@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(form) }}
+        {{ form_label(form.besoinFormationRotary) }}
+        <ul>
+            {% for choice in form.besoinFormationRotary %}
+                <li>
+                    {{ form_widget(choice) }}
+                    {{ form_label(choice) }}
+                </li>
+            {% endfor %}
+        </ul>
+        {{ form_row(form.articlesStatutsReglements) }}
+        {{ form_widget(form.voulezCommuniquerActivitePro) }}
+        {{ form_label(form.voulezCommuniquerActivitePro) }}
+        <button class="btn btn-primary">Terminer</button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block title %}
+    Etape 4
+{% endblock %}
+
