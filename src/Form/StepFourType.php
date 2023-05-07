@@ -32,6 +32,8 @@ class StepFourType extends AbstractType
                 "label" => "Les thèmes ROTARY du mois",
                 "expanded" => true,
                 "multiple" => true,
+                'attr' => ['class'=>'form-check-input'],
+                'label_attr' => ['class' => 'form-check-label']
             ])
             ->add('articlesStatutsReglements', ChoiceType::class,[
                 'choices' => [
@@ -40,11 +42,13 @@ class StepFourType extends AbstractType
                     "Chaque 2 mois" => "Chaque 2 mois",
                     "Chaque trimestre" => "Chaque trimestre",
                 ],
-                "label" => "Articles des Statuts ou Règlements Intérieurs"
+                "label" => "Articles des Statuts ou Règlements Intérieurs",
+                'attr' => ['class'=>'form-select'],
             ])
             ->add('voulezCommuniquerActivitePro', CheckboxType::class,[
                 'label' => "Voulez-vous communiquer sur votre activité professionnelle?",
-                'required' => false
+                'required' => false,
+                'attr' => ['class'=>'form-check-input']
             ])
             //->add('etape')
         ;

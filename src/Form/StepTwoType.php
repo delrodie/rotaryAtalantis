@@ -29,11 +29,14 @@ class StepTwoType extends AbstractType
                 ],
                 'label' => "Besoin en formation en développement personnel",
                 "expanded" => true,
-                'multiple' => true
+                'multiple' => true,
+                'attr' => ['class'=>'form-check-input'],
+                'label_attr' => ['class'=>'form-check-label']
             ])
             ->add('autresPreciserFormation', TextType::class,[
                 'label' => 'Autres précisez',
-                'required' => false
+                'required' => false,
+                'attr' => ['class'=>'form-control', 'autocomplete'=>"off"]
             ])
         ;
     }

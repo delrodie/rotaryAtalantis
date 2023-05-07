@@ -23,19 +23,24 @@ class StepOneType extends AbstractType
                     'Mme' => 'Mme',
                     'Mlle' => 'Mlle'
                 ],
-                'label' => "Civilité"
+                'label' => "Civilité",
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
             ])
             ->add('nom', TextType::class,[
-                'label' => "Nom"
+                'label' => "Nom",
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
             ])
             ->add('prenoms', TextType::class,[
-                'label' => "Prenoms"
+                'label' => "Prenoms",
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
             ])
             ->add('contact', TelType::class,[
-                'label' => "Contact"
+                'label' => "Contact",
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
             ])
             ->add('classification', TextType::class,[
-                'label' => "CLassification"
+                'label' => "CLassification",
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
             ])
             ->add('qualite', ChoiceType::class,[
                 'choices' => [
@@ -50,10 +55,12 @@ class StepOneType extends AbstractType
                     'Président de commission' => "Président de commission",
                     'Membre' => "Membre"
                 ],
-                'label' => "Qualité"
+                'label' => "Qualité",
+                'attr'=>['class' => 'form-select']
             ])
             ->add('anciennete', IntegerType::class,[
-                'label' => "Ancienneté"
+                'label' => "Ancienneté",
+                'attr'=>['class' => 'form-control']
             ])
             //->add('besoinFormationDevPro')
             //->add('autresPreciserFormation')

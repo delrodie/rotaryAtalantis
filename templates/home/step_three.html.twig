@@ -1,19 +1,44 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
-    {{ form_label(form.besoinConnaissanceActivitePro) }}
-    <ul>
-        {% for choice in form.besoinConnaissanceActivitePro %}
-            <li>
-                {{ form_widget(choice) }}
-                {{ form_label(choice) }}
-            </li>
-        {% endfor %}
-    </ul>
-    {{ form_widget(form) }}
-    <button class="btn btn-primary">Suivant</button>
-    {{ form_end(form) }}
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-8 offset-2">
+                <div class="row">
+                    <div class="col-6 col-md-3 col-lg-4 offset-sm-3 ">
+                        <img src="{{ asset('assets/img/logo.jpeg') }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="text-center titre">Recueil de besoins de formation</h1>
+                <ul class="nav nav-tabs nav-justified mt-5">
+                    <li class="nav-item"><a href="#" class="nav-link">Etape 1</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Etape 2</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link active">Etape 3</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Etape 4</a></li>
+                </ul>
+                <div class="tab-content mt-2">
+                    <div class="tab-pane fade" id="step1">
+                    </div>
+                    <div class="tab-pane fade show active" id="step2">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 mt-3 mb-3">
+                                <div class="progress mb-4">
+                                    <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">75%</div>
+                                </div>
+                            </div>
+                        </div>
+                        {{ include('home/_form_stepthree.html.twig') }}
+
+                    </div>
+                    <div class="tab-pane fade">3</div>
+                    <div class="tab-pane fade">4</div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block title %}

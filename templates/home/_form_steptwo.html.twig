@@ -1,0 +1,20 @@
+{{ form_start(form) }}
+    {{ form_label(form.besoinFormationDevPro) }} <br> <!--<em>(5 choix possible)</em>-->
+<ul class="checkBox mt-3">
+    {% for choice in form.besoinFormationDevPro %}
+        <li>
+            <div class="form-check">
+                {{ form_widget(choice,{'attr':{'class':'form-check-input'}}) }}
+                {{ form_label(choice) }}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+<div class="col-12 mt-3">
+    {{ form_widget(form) }}
+</div>
+<div class="text-center mt-5 d-grid gap-2 col-6 mx-auto">
+    <button type="submit" class="btn btn-primary">Suivant</button>
+</div>
+
+{{ form_end(form) }}

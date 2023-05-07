@@ -29,11 +29,13 @@ class StepThreeType extends AbstractType
                 ],
                 "label" => "Besoin en connaissance sur une activité professionnelle",
                 "expanded" => true,
-                "multiple" => true
+                "multiple" => true,
+                'label_attr' => ['class'=>'form-check-label']
             ])
             ->add('autresPreciserActivite', TextType::class,[
                 'label' => "Autres, précisez",
                 "required" => false,
+                'attr'=>['class' => 'form-control']
             ])
         ;
     }

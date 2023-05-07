@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+<div class="row form-group">
+    <div class="col-12 mt-3">{{ form_row(form.civilite) }}</div>
+    <div class="col-12 mt-3">{{ form_row(form.nom) }}</div>
+    <div class="col-12 mt-3">{{ form_row(form.prenoms) }}</div>
+    <div class="col-12 mt-3">{{ form_row(form.contact) }}</div>
+    <div class="col-12 mt-3">{{ form_row(form.classification) }}</div>
+    <div class="col-12 mt-3">{{ form_row(form.qualite) }}</div>
+    <div class="col-12 mt-3">{{ form_row(form.anciennete) }}</div>
+</div>
+<div class="text-center mt-5 d-grid gap-2 col-6 mx-auto">
+    {{ form_widget(form) }}
+    <button class="btn btn-primary">Suivant</button>
+</div>
+
+{{ form_end(form) }}
