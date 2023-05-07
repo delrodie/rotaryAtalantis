@@ -43,3 +43,40 @@
     Etape 4
 {% endblock %}
 
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        const form = document.getElementById('besoinRotary');
+        // Selection de tous les elements de case à cocher
+        const checkboxes = form.querySelectorAll('input[type=checkbox]');
+        const maxAllowed = 6;
+
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                let checkedCount = form.querySelectorAll('input[type="checkbox"]:checked').length;
+
+                if (checkedCount >= maxAllowed) {
+                    checkboxes.forEach(function (otherCheckbox) {
+                        if (!otherCheckbox.checked) {
+                            otherCheckbox.disabled = true;
+                        }
+                    })
+                }else{
+                    checkboxes.forEach(function (otherCheckbox) {
+                        otherCheckbox.disabled = false;
+                    })
+                }
+            })
+        });
+
+        form.addEventListener('submit', function (event) {
+            let checkedCount = form.querySelectorAll('input[type="checkbox"]:checked').length;
+
+            if(checkedCount !== maxAllowed){
+                event.preventDefault();
+                alert("Veuillez sélectionner exactement 6 options");
+            }
+        })
+    </script>
+{% endblock %}

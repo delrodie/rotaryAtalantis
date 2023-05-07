@@ -1,6 +1,6 @@
-{{ form_start(form) }}
-        {{ form_label(form.besoinFormationRotary) }}
-<ul>
+{{ form_start(form,{'attr':{'id':'besoinRotary'}}) }}
+        {{ form_label(form.besoinFormationRotary) }} <br> <em>(6 choix possible)</em>
+<ul class="mt-3">
     {% for choice in form.besoinFormationRotary %}
         <li>
             <div class="form-check">

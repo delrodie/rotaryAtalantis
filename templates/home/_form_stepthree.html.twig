@@ -1,5 +1,5 @@
-{{ form_start(form) }}
-    {{ form_label(form.besoinConnaissanceActivitePro) }}
+{{ form_start(form,{'attr':{'id':'besoinConnais'}}) }}
+    {{ form_label(form.besoinConnaissanceActivitePro) }} <br> <em>(5 choix possible)</em>
 <ul class="checkBox mt-3">
     {% for choice in form.besoinConnaissanceActivitePro %}
         <li>
