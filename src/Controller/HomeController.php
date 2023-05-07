@@ -7,6 +7,7 @@ use App\Form\StepOneType;
 use App\Repository\InformationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Flasher\Prime\Flasher;
 use phpDocumentor\Reflection\Types\False_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,7 @@ use Symfony\Component\String\Slugger\AsciiSlugger;
 class HomeController extends AbstractController
 {
     public function __construct(
-        private InformationRepository $informationRepository, private ManagerRegistry $managerRegistry
+        private InformationRepository $informationRepository, private Flasher $flasher
     )
     {
     }
@@ -65,16 +66,31 @@ class HomeController extends AbstractController
         // Si le nom existe déjà
         $valid = $this->informationRepository->findOneBy(['slug' => $information->getSlug()]);
         if ($valid){
-            if ($valid->getEtape() === 1)
-                return $this->generateUrl('app_step_two',['id' => $valid->getId()]);
-            elseif ($valid->getEtape() === 2)
-                return $this->generateUrl('app_step_three',['id' => $valid->getId()]);
-            elseif ($valid->getEtape() === 3)
-                return $this->generateUrl('app_step_four',['id' => $valid->getId()]);
-            elseif ($valid->getEtape() === 4)
-                return $this->generateUrl('app_fin',['id' => $valid->getId()]);
-            else
+            if ($valid->getEtape() === 1) {
+                $this->flasher->options([
+                    'timeout'=> 3000,
+                    'position' => 'top-center'
+                ])->addWarning("Merci de continuer à renseigner le formulaire à cette étape 2");
+                return $this->generateUrl('app_step_two', ['id' => $valid->getId()]);
+            }
+            elseif ($valid->getEtape() === 2) {
+                $this->flasher->options(['timeout' => 3000, 'position' => 'top-center'])
+                    ->addWarning("Merci de continuer à renseigner le formulaire à cette étape 3");
+                return $this->generateUrl('app_step_three', ['id' => $valid->getId()]);
+            }
+            elseif ($valid->getEtape() === 3) {
+                $this->flasher->options(['timeout' => 3000, 'position' => 'top-center'])
+                    ->addWarning("Merci de continuer à renseigner le formulaire à cette étape 4");
+                return $this->generateUrl('app_step_four', ['id' => $valid->getId()]);
+            }
+            elseif ($valid->getEtape() === 4) {
+                $this->flasher->options(['timeout' => 3000, 'position' => 'top-center'])
+                    ->addWarning("Vous avez déjà parcouru toutes les étapes du formulaire");
+                return $this->generateUrl('app_fin', ['id' => $valid->getId()]);
+            }
+            else {
                 return $this->generateUrl('app_home');
+            }
         }
 
         return false;

@@ -121,6 +121,15 @@ ul li .form-check {
   margin-bottom: 20px;
 }
 
+.button-disabled {
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.button-disabled:hover {
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 600px) {
   .card.fin {
     width: 100%;
