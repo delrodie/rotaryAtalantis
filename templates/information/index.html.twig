@@ -1,63 +1,110 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Information index{% endblock %}
+{% block title %}Liste des besoins recueillis{% endblock %}
 
 {% block body %}
-    <h1>Information index</h1>
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-8 offset-2">
+                <div class="row">
+                    <div class="col-6 col-md-3 col-lg-4 offset-sm-3 ">
+                        <img src="{{ asset('assets/img/logo.jpeg') }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <table class="table">
-        <thead>
+
+        <h1 class="text-center titre">Liste des besoins recueillis</h1>
+
+        <table class="table table-striped table-responsive-md display responsive nowrap" id="liste" style="width: 100%;">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Civilite</th>
-                <th>Nom</th>
-                <th>Prenoms</th>
+                <th>Nom & prenoms</th>
                 <th>Contact</th>
                 <th>Classification</th>
                 <th>Qualite</th>
                 <th>Anciennete</th>
-                <th>BesoinFormationDevPro</th>
-                <th>AutresPreciserFormation</th>
-                <th>BesoinConnaissanceActivitePro</th>
-                <th>AutresPreciserActivite</th>
-                <th>BesoinFormationRotary</th>
-                <th>ArticlesStatutsReglements</th>
-                <th>VoulezCommuniquerActivitePro</th>
+                <th>Formation en developpement personnel </th>
+                <th>Autres </th>
+                <th>Connaissance sur une activité professionnelle</th>
+                <th>Autres</th>
+                <th>Formation sur le Rotary</th>
+                <th>Articles des status ou règlements</th>
+                <th>Communiquer sur votre activité professionnelle</th>
                 <th>Etape</th>
-                <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for information in information %}
-            <tr>
-                <td>{{ information.id }}</td>
-                <td>{{ information.civilite }}</td>
-                <td>{{ information.nom }}</td>
-                <td>{{ information.prenoms }}</td>
-                <td>{{ information.contact }}</td>
-                <td>{{ information.classification }}</td>
-                <td>{{ information.qualite }}</td>
-                <td>{{ information.anciennete }}</td>
-                <td>{{ information.besoinFormationDevPro ? information.besoinFormationDevPro|join(', ') : '' }}</td>
-                <td>{{ information.autresPreciserFormation }}</td>
-                <td>{{ information.besoinConnaissanceActivitePro ? information.besoinConnaissanceActivitePro|join(', ') : '' }}</td>
-                <td>{{ information.autresPreciserActivite }}</td>
-                <td>{{ information.besoinFormationRotary ? information.besoinFormationRotary|join(', ') : '' }}</td>
-                <td>{{ information.articlesStatutsReglements }}</td>
-                <td>{{ information.voulezCommuniquerActivitePro ? 'Yes' : 'No' }}</td>
-                <td>{{ information.etape }}</td>
-                <td>
-                    <a href="{{ path('app_information_show', {'id': information.id}) }}">show</a>
-                    <a href="{{ path('app_information_edit', {'id': information.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="17">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for information in information %}
+                <tr>
+                    <td>{{ information.id }}</td>
+                    <td>{{ information.civilite }}</td>
+                    <td>{{ information.nom }} {{ information.prenoms }}</td>
+                    <td>{{ information.contact }}</td>
+                    <td>{{ information.classification }}</td>
+                    <td>{{ information.qualite }}</td>
+                    <td>{{ information.anciennete }}</td>
+                    <td>{{ information.besoinFormationDevPro ? information.besoinFormationDevPro|join(', ') : '' }}</td>
+                    <td>{{ information.autresPreciserFormation }}</td>
+                    <td>{{ information.besoinConnaissanceActivitePro ? information.besoinConnaissanceActivitePro|join(', ') : '' }}</td>
+                    <td>{{ information.autresPreciserActivite }}</td>
+                    <td>{{ information.besoinFormationRotary ? information.besoinFormationRotary|join(', ') : '' }}</td>
+                    <td>{{ information.articlesStatutsReglements }}</td>
+                    <td>{{ information.voulezCommuniquerActivitePro ? 'Yes' : 'No' }}</td>
+                    <td>{{ information.etape }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="17">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_information_new') }}">Create new</a>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#liste').DataTable({
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ],
+                language:{
+                    url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                responsive: true,
+                scrollX:true
+            });
+        });
+    </script>
 {% endblock %}
