@@ -21,7 +21,6 @@ class StepTwoController extends AbstractController
         $form->handleRequest($request); //dd($form);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $data = $form->getData(); //dd($data);
             $information->setEtape(2);
             $informationRepository->save($information, true);
 

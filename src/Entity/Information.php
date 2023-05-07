@@ -59,6 +59,9 @@ class Information
     #[ORM\Column(nullable: true)]
     private ?int $etape = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -240,6 +243,18 @@ class Information
     public function setEtape(?int $etape): self
     {
         $this->etape = $etape;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
