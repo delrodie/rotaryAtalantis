@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{ form_start(form) }}
-    {{ form_label(form.besoinFormationDevPro) }} <em>(5 choix possible)</em>
+    {{ form_start(form) }}
+    {{ form_label(form.besoinConnaissanceActivitePro) }}
     <ul>
-        {% for choice in form.besoinFormationDevPro %}
+        {% for choice in form.besoinConnaissanceActivitePro %}
             <li>
                 {{ form_widget(choice) }}
                 {{ form_label(choice) }}
@@ -12,9 +12,11 @@
         {% endfor %}
     </ul>
     {{ form_widget(form) }}
-    <button type="submit" class="btn btn-primary">Suivant</button>
+    <button class="btn btn-primary">Suivant</button>
     {{ form_end(form) }}
 {% endblock %}
 
-{% block title %}Rotary Atlantis etape 2{% endblock %}
+{% block title %}
+    Etape 3
+{% endblock %}
 

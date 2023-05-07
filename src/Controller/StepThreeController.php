@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Information;
-use App\Form\StepTwoType;
+use App\Form\StepThreeType;
 use App\Repository\InformationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,25 +11,25 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/etape-2')]
-class StepTwoController extends AbstractController
+#[Route('/etape-3')]
+class StepThreeController extends AbstractController
 {
-    #[Route('/{id}', name: 'app_step_two', methods: ['GET', 'POST'])]
+    #[Route('/{id}', name: 'app_step_three', methods: ['GET', 'POST'])]
     public function index(Request $request, Information $information, InformationRepository $informationRepository): Response
     {
-        $form = $this->createForm(StepTwoType::class, $information);
-        $form->handleRequest($request); //dd($form);
+        $form = $this->createForm(StepThreeType::class, $information);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $information->setEtape(2);
+            $information->setEtape(3);
             $informationRepository->save($information, true);
 
-            return $this->redirectToRoute('app_step_three', ['id' => $information->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('');
         }
 
-        return $this->render('home/step_two.html.twig', [
-            'form' => $form,
-            'information' => $information
+        return $this->render('home/step_three.html.twig', [
+            'information' => $information,
+            'form' => $form
         ]);
     }
 }
