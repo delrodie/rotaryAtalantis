@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information{% endblock %}
+
+{% block body %}
+    <h1>Information</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ information.id }}</td>
+            </tr>
+            <tr>
+                <th>Civilite</th>
+                <td>{{ information.civilite }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ information.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenoms</th>
+                <td>{{ information.prenoms }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ information.contact }}</td>
+            </tr>
+            <tr>
+                <th>Classification</th>
+                <td>{{ information.classification }}</td>
+            </tr>
+            <tr>
+                <th>Qualite</th>
+                <td>{{ information.qualite }}</td>
+            </tr>
+            <tr>
+                <th>Anciennete</th>
+                <td>{{ information.anciennete }}</td>
+            </tr>
+            <tr>
+                <th>BesoinFormationDevPro</th>
+                <td>{{ information.besoinFormationDevPro ? information.besoinFormationDevPro|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AutresPreciserFormation</th>
+                <td>{{ information.autresPreciserFormation }}</td>
+            </tr>
+            <tr>
+                <th>BesoinConnaissanceActivitePro</th>
+                <td>{{ information.besoinConnaissanceActivitePro ? information.besoinConnaissanceActivitePro|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>AutresPreciserActivite</th>
+                <td>{{ information.autresPreciserActivite }}</td>
+            </tr>
+            <tr>
+                <th>BesoinFormationRotary</th>
+                <td>{{ information.besoinFormationRotary ? information.besoinFormationRotary|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ArticlesStatutsReglements</th>
+                <td>{{ information.articlesStatutsReglements }}</td>
+            </tr>
+            <tr>
+                <th>VoulezCommuniquerActivitePro</th>
+                <td>{{ information.voulezCommuniquerActivitePro ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Etape</th>
+                <td>{{ information.etape }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_information_index') }}">back to list</a>
+
+    <a href="{{ path('app_information_edit', {'id': information.id}) }}">edit</a>
+
+    {{ include('information/_delete_form.html.twig') }}
+{% endblock %}

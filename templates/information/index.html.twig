@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information index{% endblock %}
+
+{% block body %}
+    <h1>Information index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Civilite</th>
+                <th>Nom</th>
+                <th>Prenoms</th>
+                <th>Contact</th>
+                <th>Classification</th>
+                <th>Qualite</th>
+                <th>Anciennete</th>
+                <th>BesoinFormationDevPro</th>
+                <th>AutresPreciserFormation</th>
+                <th>BesoinConnaissanceActivitePro</th>
+                <th>AutresPreciserActivite</th>
+                <th>BesoinFormationRotary</th>
+                <th>ArticlesStatutsReglements</th>
+                <th>VoulezCommuniquerActivitePro</th>
+                <th>Etape</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for information in information %}
+            <tr>
+                <td>{{ information.id }}</td>
+                <td>{{ information.civilite }}</td>
+                <td>{{ information.nom }}</td>
+                <td>{{ information.prenoms }}</td>
+                <td>{{ information.contact }}</td>
+                <td>{{ information.classification }}</td>
+                <td>{{ information.qualite }}</td>
+                <td>{{ information.anciennete }}</td>
+                <td>{{ information.besoinFormationDevPro ? information.besoinFormationDevPro|join(', ') : '' }}</td>
+                <td>{{ information.autresPreciserFormation }}</td>
+                <td>{{ information.besoinConnaissanceActivitePro ? information.besoinConnaissanceActivitePro|join(', ') : '' }}</td>
+                <td>{{ information.autresPreciserActivite }}</td>
+                <td>{{ information.besoinFormationRotary ? information.besoinFormationRotary|join(', ') : '' }}</td>
+                <td>{{ information.articlesStatutsReglements }}</td>
+                <td>{{ information.voulezCommuniquerActivitePro ? 'Yes' : 'No' }}</td>
+                <td>{{ information.etape }}</td>
+                <td>
+                    <a href="{{ path('app_information_show', {'id': information.id}) }}">show</a>
+                    <a href="{{ path('app_information_edit', {'id': information.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_information_new') }}">Create new</a>
+{% endblock %}
