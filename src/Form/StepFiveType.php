@@ -22,7 +22,8 @@ class StepFiveType extends AbstractType
                 "expanded" => true,
                 'multiple' => false,
                 'attr' => ['class'=>'form-check-input'],
-                'label_attr' => ['class'=>'form-check-label']
+                'label_attr' => ['class'=>'form-check-label'],
+                'required' => true
             ])
         ;
     }

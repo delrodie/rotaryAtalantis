@@ -82,6 +82,8 @@
             if(checkedCount !== maxAllowed){
                 event.preventDefault();
                 alert("Veuillez sélectionner exactement 6 options");
+                submitButton.disabled = false;
+                submitButton.classList.remove('button-disabled');
             }
         })
     </script>

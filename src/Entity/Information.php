@@ -54,9 +54,9 @@ class Information
     private ?string $articlesStatutsReglements = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $voulezCommuniquerActivitePro = null;
+    private ?string $voulezCommuniquerActivitePro = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?int $etape = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -238,7 +238,7 @@ class Information
         return $this;
     }
 
-    public function isVoulezCommuniquerActivitePro(): ?bool
+    public function getVoulezCommuniquerActivitePro(): ?bool
     {
         return $this->voulezCommuniquerActivitePro;
     }
