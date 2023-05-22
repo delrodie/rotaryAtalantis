@@ -53,7 +53,7 @@ class Information
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $articlesStatutsReglements = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $voulezCommuniquerActivitePro = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -238,12 +238,12 @@ class Information
         return $this;
     }
 
-    public function getVoulezCommuniquerActivitePro(): ?bool
+    public function getVoulezCommuniquerActivitePro(): ?string
     {
         return $this->voulezCommuniquerActivitePro;
     }
 
-    public function setVoulezCommuniquerActivitePro(?bool $voulezCommuniquerActivitePro): self
+    public function setVoulezCommuniquerActivitePro(?string $voulezCommuniquerActivitePro): self
     {
         $this->voulezCommuniquerActivitePro = $voulezCommuniquerActivitePro;
 
