@@ -86,6 +86,11 @@ class HomeController extends AbstractController
             elseif ($valid->getEtape() === 4) {
                 $this->flasher->options(['timeout' => 3000, 'position' => 'top-center'])
                     ->addWarning("Vous avez déjà parcouru toutes les étapes du formulaire");
+                return $this->generateUrl('app_step_four', ['id' => $valid->getId()]);
+            }
+            elseif ($valid->getEtape() === 5) {
+                $this->flasher->options(['timeout' => 3000, 'position' => 'top-center'])
+                    ->addWarning("Vous avez déjà parcouru toutes les étapes du formulaire");
                 return $this->generateUrl('app_fin', ['id' => $valid->getId()]);
             }
             else {

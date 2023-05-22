@@ -1,0 +1,19 @@
+{{ form_start(form) }}
+        {{ form_label(form.voulezCommuniquerActivitePro) }}
+<ul class="mt-3">
+    {% for choice in form.voulezCommuniquerActivitePro %}
+        <li>
+            <div class="form-check">
+                {{ form_widget(choice,{'attr':{'class':'form-check-input'}}) }}
+                {{ form_label(choice) }}
+            </div>
+
+        </li>
+    {% endfor %}
+</ul>
+
+<div class="text-center mt-5 d-grid gap-2 col-6 mx-auto">
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">Terminé</button>
+</div>
+{{ form_end(form) }}

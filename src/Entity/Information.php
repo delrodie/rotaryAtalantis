@@ -62,6 +62,21 @@ class Information
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $minuteRotarienne = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $autreMinuteRotarienne = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $commission = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $autreCommission = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $autreStatuts = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -255,6 +270,66 @@ class Information
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getMinuteRotarienne(): ?string
+    {
+        return $this->minuteRotarienne;
+    }
+
+    public function setMinuteRotarienne(?string $minuteRotarienne): self
+    {
+        $this->minuteRotarienne = $minuteRotarienne;
+
+        return $this;
+    }
+
+    public function getAutreMinuteRotarienne(): ?string
+    {
+        return $this->autreMinuteRotarienne;
+    }
+
+    public function setAutreMinuteRotarienne(?string $autreMinuteRotarienne): self
+    {
+        $this->autreMinuteRotarienne = $autreMinuteRotarienne;
+
+        return $this;
+    }
+
+    public function getCommission(): ?string
+    {
+        return $this->commission;
+    }
+
+    public function setCommission(?string $commission): self
+    {
+        $this->commission = $commission;
+
+        return $this;
+    }
+
+    public function getAutreCommission(): ?string
+    {
+        return $this->autreCommission;
+    }
+
+    public function setAutreCommission(?string $autreCommission): self
+    {
+        $this->autreCommission = $autreCommission;
+
+        return $this;
+    }
+
+    public function getAutreStatuts(): ?string
+    {
+        return $this->autreStatuts;
+    }
+
+    public function setAutreStatuts(?string $autreStatuts): self
+    {
+        $this->autreStatuts = $autreStatuts;
 
         return $this;
     }
