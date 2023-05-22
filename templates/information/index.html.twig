@@ -53,7 +53,7 @@
                     <td>{{ information.autresPreciserActivite }}</td>
                     <td>{{ information.besoinFormationRotary ? information.besoinFormationRotary|join(', ') : '' }}</td>
                     <td>{{ information.articlesStatutsReglements }}</td>
-                    <td>{{ information.voulezCommuniquerActivitePro ? 'Yes' : 'No' }}</td>
+                    <td>{{ information.voulezCommuniquerActivitePro ? information.voulezCommuniquerActivitePro : '' }}</td>
                     <td>{{ information.etape }}</td>
                 </tr>
             {% else %}

@@ -35,7 +35,8 @@ class InformationType extends AbstractType
                 'label' => "Contact"
             ])
             ->add('classification', TextType::class,[
-                'label' => "CLassification"
+                'label' => "CLassification",
+                'required' => false
             ])
             ->add('qualite', ChoiceType::class,[
                 'choices' => [
