@@ -12,7 +12,7 @@
             </div>
         </div>
             <div class="col-lg-8 offset-lg-2">
-                <h1 class="text-center titre">Recueil de besoins de formation</h1>
+                <h1 class="text-center titre">Sondage des besoins en formation</h1>
                 <ul class="nav nav-tabs nav-justified mt-5">
                     <li class="nav-item"><a href="#" class="nav-link">Etape 1</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Etape 2</a></li>
@@ -48,41 +48,30 @@
 {% block javascripts %}
     {{ parent() }}
     <script>
-        const form = document.getElementById('besoinRotary');
-        // Selection de tous les elements de case à cocher
-        const checkboxes = form.querySelectorAll('input[type=checkbox]');
-        const maxAllowed = 6;
+        
 
-        checkboxes.forEach(function (checkbox) {
-            checkbox.addEventListener('change', function () {
-                let checkedCount = form.querySelectorAll('input[type="checkbox"]:checked').length;
+        window.addEventListener('DOMContentLoaded', function(){
+            var choixOui = document.getElementById('step_five_voulezCommuniquerActivitePro_0');
+            var choixNon = document.getElementById('step_five_voulezCommuniquerActivitePro_1');
+            var inputTheme = document.getElementById('step_five_themeActivitePro');
+            var inputNom = document.getElementById('step_five_nomConferencier');
+            var theme = document.getElementById('theme');
+            var nom = document.getElementById('nom');
 
-                if (checkedCount >= maxAllowed) {
-                    checkboxes.forEach(function (otherCheckbox) {
-                        if (!otherCheckbox.checked) {
-                            otherCheckbox.disabled = true;
-                        }
-                    })
-                }else{
-                    checkboxes.forEach(function (otherCheckbox) {
-                        otherCheckbox.disabled = false;
-                    })
-                }
-            })
-        });
-
-        form.addEventListener('submit', function (event) {
-            const submitButton = form.querySelector('button[type="submit"]');
-
-            submitButton.disabled = true;
-            submitButton.classList.add('button-disabled');
-
-            let checkedCount = form.querySelectorAll('input[type="checkbox"]:checked').length;
-
-            if(checkedCount !== maxAllowed){
-                event.preventDefault();
-                alert("Veuillez sélectionner exactement 6 options");
+            function toggleChampsVisible(){
+                inputTheme.style.display = choixOui.checked ? "block" : "none";
+                inputNom.style.display = choixOui.checked ? "block" : "none";
+                theme.style.display = choixOui.checked ? "block" : "none";
+                nom.style.display = choixOui.checked ? "block" : "none";
+                //  console.log(affichage)
             }
+
+            toggleChampsVisible();
+
+            choixOui.addEventListener("click", toggleChampsVisible);
+            choixNon.addEventListener("click", toggleChampsVisible);
         })
+
+        
     </script>
 {% endblock %}

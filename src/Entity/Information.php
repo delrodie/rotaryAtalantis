@@ -77,6 +77,12 @@ class Information
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $autreStatuts = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $themeActivitePro = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nomConferencier = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -330,6 +336,30 @@ class Information
     public function setAutreStatuts(?string $autreStatuts): self
     {
         $this->autreStatuts = $autreStatuts;
+
+        return $this;
+    }
+
+    public function getThemeActivitePro(): ?string
+    {
+        return $this->themeActivitePro;
+    }
+
+    public function setThemeActivitePro(?string $themeActivitePro): self
+    {
+        $this->themeActivitePro = $themeActivitePro;
+
+        return $this;
+    }
+
+    public function getNomConferencier(): ?string
+    {
+        return $this->nomConferencier;
+    }
+
+    public function setNomConferencier(?string $nomConferencier): self
+    {
+        $this->nomConferencier = $nomConferencier;
 
         return $this;
     }

@@ -32,7 +32,12 @@
                 <th>Connaissance sur une activité professionnelle</th>
                 <th>Autres</th>
                 <th>Formation sur le Rotary</th>
+                <th>Minute Rotarienne</th>
+                <th>Autres </th>
                 <th>Articles des status ou règlements</th>
+                <th>Autres </th>
+                <th>Commission </th>
+                <th>Autres </th>
                 <th>Communiquer sur votre activité professionnelle</th>
                 <th>Etape</th>
             </tr>
@@ -52,7 +57,12 @@
                     <td>{{ information.besoinConnaissanceActivitePro ? information.besoinConnaissanceActivitePro|join(', ') : '' }}</td>
                     <td>{{ information.autresPreciserActivite }}</td>
                     <td>{{ information.besoinFormationRotary ? information.besoinFormationRotary|join(', ') : '' }}</td>
+                    <td>{{ information.minuteRotarienne }}</td>
+                    <td>{{ information.autreMinuteRotarienne }}</td>
                     <td>{{ information.articlesStatutsReglements }}</td>
+                    <td>{{ information.autreStatuts }}</td>
+                    <td>{{ information.commission }}</td>
+                    <td>{{ information.autreCommission }}</td>
                     <td>{{ information.voulezCommuniquerActivitePro ? information.voulezCommuniquerActivitePro : '' }}</td>
                     <td>{{ information.etape }}</td>
                 </tr>

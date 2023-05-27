@@ -31,11 +31,11 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $this->slug($information);
+//            $this->slug($information);
             $information->setEtape(1);
-            if ($this->verification($information)){
+            /*if ($this->verification($information)){
                 return $this->redirect($this->verification($information));
-            }
+            }*/
 
             $this->informationRepository->save($information, true);
 

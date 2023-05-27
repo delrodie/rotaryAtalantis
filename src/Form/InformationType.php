@@ -23,13 +23,16 @@ class InformationType extends AbstractType
                     'Mme' => 'Mme',
                     'Mlle' => 'Mlle'
                 ],
-                'label' => "Civilité"
+                'label' => "Civilité",
+                'attr' => ['class'=>"form-control test"]
             ])
             ->add('nom', TextType::class,[
-                'label' => "Nom"
+                'label' => "Nom",
+                "required" => false
             ])
             ->add('prenoms', TextType::class,[
-                'label' => "Prenoms"
+                'label' => "Prenoms",
+                "required" => false
             ])
             ->add('contact', TelType::class,[
                 'label' => "Contact"
@@ -51,10 +54,12 @@ class InformationType extends AbstractType
                     'Président de commission' => "Président de commission",
                     'Membre' => "Membre"
                 ],
-                'label' => "Qualité"
+                'label' => "Qualité",
+                "required" => false
             ])
             ->add('anciennete', IntegerType::class,[
-                'label' => "Ancienneté"
+                'label' => "Ancienneté",
+                "required" => false
             ])
             //->add('besoinFormationDevPro')
             //->add('autresPreciserFormation')

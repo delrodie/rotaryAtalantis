@@ -15,7 +15,7 @@ class StepFourType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('besoinFormationRotary', ChoiceType::class,[
+            ->add('besoinFormationRotary', ChoiceType::class, [
                 'choices' => [
                     "Août - Mois de l'effectif" => "Août - Mois de l'effectif",
                     "Septembre - Alphabétisation et éducation de base" => "Septembre - Alphabétisation et éducation de base",
@@ -32,10 +32,10 @@ class StepFourType extends AbstractType
                 "label" => "Les thèmes ROTARY du mois",
                 "expanded" => true,
                 "multiple" => true,
-                'attr' => ['class'=>'form-check-input besoinRotary'],
+                'attr' => ['class' => 'form-check-input besoinRotary'],
                 'label_attr' => ['class' => 'form-check-label']
             ])
-            ->add('minuteRotarienne', ChoiceType::class,[
+            ->add('minuteRotarienne', ChoiceType::class, [
                 'choices' => [
                     '-- Selectionnez --' => "",
                     'Chaque semaine' => "Chaque semaine",
@@ -43,16 +43,16 @@ class StepFourType extends AbstractType
                     "Chaque 2 mois" => "Chaque 2 mois",
                     "Chaque trimestre" => "Chaque trimestre",
                 ],
-                "label" => "La Minute Rotarienne",
-                'attr' => ['class'=>'form-select'],
+                "label" => "Fréquence de communication sur la Minute Rotarienne",
+                'attr' => ['class' => 'form-select'],
                 'required' => true
             ])
-            ->add('autreMinuteRotarienne', TextType::class,[
+            ->add('autreMinuteRotarienne', TextType::class, [
                 'label' => "Autres, préciser",
                 "required" => false,
-                'attr'=>['class' => 'form-control']
+                'attr' => ['class' => 'form-control']
             ])
-            ->add('articlesStatutsReglements', ChoiceType::class,[
+            ->add('articlesStatutsReglements', ChoiceType::class, [
                 'choices' => [
                     '-- Selectionnez --' => "",
                     'Chaque semaine' => "Chaque semaine",
@@ -60,16 +60,16 @@ class StepFourType extends AbstractType
                     "Chaque 2 mois" => "Chaque 2 mois",
                     "Chaque trimestre" => "Chaque trimestre",
                 ],
-                "label" => "Articles des Statuts ou Règlements Intérieurs",
-                'attr' => ['class'=>'form-select'],
+                "label" => "Fréquence de communication sur les Articles des Statuts ou Règlements Intérieurs",
+                'attr' => ['class' => 'form-select'],
                 'required' => true
             ])
-            ->add('autreStatuts', TextType::class,[
+            ->add('autreStatuts', TextType::class, [
                 'label' => "Autres, préciser",
                 "required" => false,
-                'attr'=>['class' => 'form-control']
+                'attr' => ['class' => 'form-control']
             ])
-            ->add('commission', ChoiceType::class,[
+            /*->add('commission', ChoiceType::class, [
                 'choices' => [
                     '-- Selectionnez --' => "",
                     'Debut de mandat' => "Debut de mandat",
@@ -77,15 +77,15 @@ class StepFourType extends AbstractType
                     "Fin de mandat" => "Fin de mandat",
                 ],
                 "label" => "Les commissions et leurs rôles dans les Clubs Rotary",
-                'attr' => ['class'=>'form-select'],
+                'attr' => ['class' => 'form-select'],
                 "required" => true
             ])
-            ->add('autreCommission', TextType::class,[
+            ->add('autreCommission', TextType::class, [
                 'label' => "Autres, préciser",
                 "required" => false,
-                'attr'=>['class' => 'form-control']
+                'attr' => ['class' => 'form-control']
             ])
-           /* ->add('voulezCommuniquerActivitePro', CheckboxType::class,[
+             ->add('voulezCommuniquerActivitePro', CheckboxType::class,[
                 'label' => "Voulez-vous communiquer sur votre activité professionnelle?",
                 'required' => false,
                 'attr' => ['class'=>'form-check-input']

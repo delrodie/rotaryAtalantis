@@ -24,23 +24,28 @@ class StepOneType extends AbstractType
                     'Mlle' => 'Mlle'
                 ],
                 'label' => "Civilité",
-                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"],
+                'required' => false,
             ])
             ->add('nom', TextType::class,[
                 'label' => "Nom",
-                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"],
+                'required' => false,
             ])
             ->add('prenoms', TextType::class,[
                 'label' => "Prenoms",
-                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"],
+                'required' => false,
             ])
             ->add('contact', TelType::class,[
                 'label' => "Contact",
-                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"],
+                'required' => false,
             ])
             ->add('classification', TextType::class,[
                 'label' => "CLassification",
-                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"]
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"],
+                'required' => false,
             ])
             ->add('qualite', ChoiceType::class,[
                 'choices' => [
@@ -56,11 +61,13 @@ class StepOneType extends AbstractType
                     'Membre' => "Membre"
                 ],
                 'label' => "Qualité",
-                'attr'=>['class' => 'form-select']
+                'attr'=>['class' => 'form-select'],
+                'required' => false,
             ])
             ->add('anciennete', IntegerType::class,[
                 'label' => "Ancienneté",
-                'attr'=>['class' => 'form-control']
+                'attr'=>['class' => 'form-control'],
+                'required' => false,
             ])
             //->add('besoinFormationDevPro')
             //->add('autresPreciserFormation')
