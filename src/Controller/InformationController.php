@@ -16,6 +16,7 @@ class InformationController extends AbstractController
     #[Route('/', name: 'app_information_index', methods: ['GET'])]
     public function index(InformationRepository $informationRepository): Response
     {
+        dd($informationRepository->findAll());
         return $this->render('information/index.html.twig', [
             'information' => $informationRepository->findAll(),
         ]);
@@ -70,7 +71,7 @@ class InformationController extends AbstractController
     #[Route('/{id}', name: 'app_information_delete', methods: ['POST'])]
     public function delete(Request $request, Information $information, InformationRepository $informationRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$information->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $information->getId(), $request->request->get('_token'))) {
             $informationRepository->remove($information, true);
         }
 

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Information;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,7 +36,13 @@ class StepFiveType extends AbstractType
                 'label' => "Nom du conférencier",
                 "required" => false,
                 'attr' => ['class' => 'form-control']
-            ]);
+            ])
+            ->add('contact', TelType::class,[
+                'label' => "Contact",
+                'attr'=>['class' => 'form-control', 'autocomplete' =>"off"],
+                'required' => false,
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
