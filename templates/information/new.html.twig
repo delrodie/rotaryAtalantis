@@ -1,11 +1,188 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Information{% endblock %}
+{% block title %}Statistiques{% endblock %}
 
 {% block body %}
-    <h1>Create new Information</h1>
+    <div class="card">
+        <div class="row">
+            <div class="col-lg-8 offset-2">
+                <div class="row">
+                    <div class="col-6 col-md-3 col-lg-4 offset-sm-3 ">
+                        <img src="{{ asset('assets/img/logo.jpeg') }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    {{ include('information/_form.html.twig') }}
+        <ul class="nav nav-tabs mt-5">
+            <li class="nav-item">
+                <a href="#developpement" id="tab1" data-bs-toggle="tab" class="nav-link active">Developpement personnel</a>
+            </li>
+            <li class="nav-item">
+                <a href="#professionnelle" id="tab2" data-bs-toggle="tab" class="nav-link">Activité professionnelle</a>
+            </li>
+            <li class="nav-item">
+                <a href="#rotary" id="tab3" data-bs-toggle="tab" class="nav-link">Formation sur le rotary</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="developpement">
+                <h1 class="text-center titre">Formation en developpement personnel</h1>
 
-    <a href="{{ path('app_information_index') }}">back to list</a>
+                <table class="table table-striped table-responsive-md display responsive nowrap" id="liste" style="width: 100%;">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center">Libelle</th>
+                        <th class="text-center">Nombres</th>
+                        <th class="text-center">Pourcentage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dev in developpements %}
+                        <tr>
+                            <td class="text-center">{{ loop.index }}</td>
+                            <td>{{ dev.element }}</td>
+                            <td class="text-center">{{ dev.nombre }}</td>
+                            <td class="text-center">{{ dev.pourcentage }} %</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="tab-pane fade" id="professionnelle">
+                <h1 class="text-center titre">Connaissance sur une activité professionnelle</h1>
+
+                <table class="table table-striped table-responsive-md display responsive nowrap" id="liste2" style="width: 100%;">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center">Libelle</th>
+                        <th class="text-center">Nombres</th>
+                        <th class="text-center">Pourcentage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dev in connaissances %}
+                        <tr>
+                            <td class="text-center">{{ loop.index }}</td>
+                            <td>{{ dev.element }}</td>
+                            <td class="text-center">{{ dev.nombre }}</td>
+                            <td class="text-center">{{ dev.pourcentage }} %</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <div class="tab-pane fade" id="rotary">
+                <h1 class="text-center titre">Formation sur le Rotary</h1>
+
+                <table class="table table-striped table-responsive-md display responsive nowrap" id="liste3" style="width: 100%;">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th class="text-center">Libelle</th>
+                        <th class="text-center">Nombres</th>
+                        <th class="text-center">Pourcentage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dev in rotary %}
+                        <tr>
+                            <td class="text-center">{{ loop.index }}</td>
+                            <td>{{ dev.element }}</td>
+                            <td class="text-center">{{ dev.nombre }}</td>
+                            <td class="text-center">{{ dev.pourcentage }} %</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#liste').DataTable({
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ],
+                language:{
+                    url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                responsive: true,
+                scrollX:true
+            });
+            $('#liste2').DataTable({
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ],
+                language:{
+                    url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                responsive: true,
+                scrollX:true
+            });
+            $('#liste3').DataTable({
+                buttons: [
+                    'copy', 'excel', 'pdf'
+                ],
+                language:{
+                    url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/fr-FR.json"
+                },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copyHtml5',
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                responsive: true,
+                scrollX:true
+            });
+        });
+    </script>
 {% endblock %}

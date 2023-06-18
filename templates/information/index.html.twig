@@ -21,7 +21,6 @@
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Civilite</th>
                 <th>Nom & prenoms</th>
                 <th>Contact</th>
                 <th>Classification</th>
@@ -39,15 +38,15 @@
                 <th>Commission </th>
                 <th>Autres </th>
                 <th>Communiquer sur votre activité professionnelle</th>
-                <th>Etape</th>
+                <th>Theme</th>
+                <th>Conferencier </th>
             </tr>
             </thead>
             <tbody>
             {% for information in information %}
                 <tr>
-                    <td>{{ information.id }}</td>
-                    <td>{{ information.civilite }}</td>
-                    <td>{{ information.nom }} {{ information.prenoms }}</td>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ information.civilite }} {{ information.nom }} {{ information.prenoms }}</td>
                     <td>{{ information.contact }}</td>
                     <td>{{ information.classification }}</td>
                     <td>{{ information.qualite }}</td>
@@ -64,7 +63,8 @@
                     <td>{{ information.commission }}</td>
                     <td>{{ information.autreCommission }}</td>
                     <td>{{ information.voulezCommuniquerActivitePro ? information.voulezCommuniquerActivitePro : '' }}</td>
-                    <td>{{ information.etape }}</td>
+                    <td>{{ information.themeActivitePro }}</td>
+                    <td>{{ information.nomConferencier }}</td>
                 </tr>
             {% else %}
                 <tr>
